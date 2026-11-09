@@ -1,5 +1,7 @@
 # Python Document Scanner
 
+[![Tests](https://github.com/abhi-0404/Document-Scanner-OpenCV/actions/workflows/tests.yml/badge.svg)](https://github.com/abhi-0404/Document-Scanner-OpenCV/actions/workflows/tests.yml)
+
 A multi-stage image processing pipeline built with Python and OpenCV that automatically detects, crops, and enhances documents from a photo — replicating the core functionality of apps like CamScanner.
 
 Comes with three ways to run: a **web interface**, a **CLI script**, and a **Jupyter notebook**.
@@ -156,4 +158,21 @@ Install all at once:
 
 ```bash
 pip install -r requirements.txt
+```
+
+## Tests
+
+The `tests/` suite checks the pipeline on a synthetic photo with known page corners, so the expected answer is exact:
+
+- corner ordering, and corner detection within a few pixels of the true page corners
+- falling back to the full image when no page is found
+- perspective correction producing a page of the right size
+- the full `scan()` returning the bright, flattened page
+- the web app: upload validation, scanning, serving and downloading results
+
+It runs on every push and pull request through GitHub Actions.
+
+```bash
+pip install -r requirements-test.txt
+pytest -q
 ```
