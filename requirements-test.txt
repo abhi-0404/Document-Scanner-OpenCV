@@ -1,0 +1,5 @@
+# Minimal set for running the tests (headless OpenCV needs no display libraries).
+numpy
+opencv-python-headless
+flask
+pytest==8.3.5
